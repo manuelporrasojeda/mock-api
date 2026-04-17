@@ -1,0 +1,9 @@
+{
+  "quotaId": "QUO-001",
+  "status": "AVAILABLE",
+  "currency": "EUR",
+  "totalAmount": 1500,
+  "usedAmount": 350,
+  "availableAmount": 1150,
+  "lastUpdated": "2026-04-03T09:00:00Z"
+}

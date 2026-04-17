@@ -1,0 +1,12 @@
+{
+  "agreementId": "AGR-001",
+  "status": "IS WORKING!",
+  "product": "Fiber",
+  "plan": "Unlimited Plus",
+  "startDate": "2025-01-01",
+  "customer": {
+    "fullName": "Mock Customer",
+    "documentType": "NATIONAL_ID",
+    "documentNumber": "12345678A"
+  }
+}
