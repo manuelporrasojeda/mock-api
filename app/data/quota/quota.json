@@ -1,0 +1,227 @@
+{
+    "quotaList": [
+      {
+        "phone_number": "+5511223344556",
+        "data": [
+          {
+            "consumed": 2576980377,
+            "max": 17179869184,
+            "remaining": 14602888807,
+            "unit": "byte",
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z",
+            "name": "Como quiser",
+            "description": "Para usar como quiser",
+            "categories": [
+              "aggregated"
+            ],
+            "origins": [
+              "home"
+            ],
+            "time_bands": [
+              "all"
+            ],
+            "tags": [
+              "livre"
+            ],
+            "is_shared": false,
+            "in_use": false,
+            "can_be_transferred": false,
+            "id": "MTE5MTAwMDM3NzUwQ29tbyBxdWlzZXI="
+          },
+          {
+            "name": "Meu Plano",
+            "description": "Meu Plano",
+            "categories": [
+              "general"
+            ],
+            "max": 17179869184,
+            "consumed": 2576980377,
+            "remaining": 14602888807,
+            "unit": "byte",
+            "in_use": false,
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z",
+            "is_shared": false,
+            "can_be_transferred": true,
+            "tags": [
+              "livre"
+            ],
+            "id": "MTE5MTAwMDM3NzU0TWV1IFBsYW5vOkNTOjgxOkNPOjc="
+          }
+        ],
+        "voice": [
+          {
+            "id": "MTE5MTAwMDM3NzVMaWdhw6fDtWVzIExvY2FpcyBQYXJhIFZpdm8gKyAw",
+            "name": "Ligações Locais Para Vivo",
+            "description": "Ligações Locais Para Vivo",
+            "categories": [
+              "general"
+            ],
+            "max": -1,
+            "consumed": 0,
+            "remaining": -1,
+            "unit": "minute",
+            "time_bands": [
+              "all"
+            ],
+            "destinations": [
+              "telefonica",
+              "local"
+            ],
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z"
+          },
+          {
+            "id": "MTE5MTAwMDM3NzVMaWdhw6fDtWVzIGRlIExvbmdhIERpc3TDom5jaWEgcGFyYSBWaXZvIGNvbSBjw7NkaWdvIDE1ICsgMQ==",
+            "name": "Ligações de Longa Distância para Vivo com código 15",
+            "description": "Ligações de Longa Distância para Vivo com código 15",
+            "categories": [
+              "general"
+            ],
+            "max": -1,
+            "consumed": 0,
+            "remaining": -1,
+            "unit": "minute",
+            "time_bands": [
+              "all"
+            ],
+            "destinations": [
+              "telefonica",
+              "national"
+            ],
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z"
+          },
+          {
+            "id": "MTE5MTAwMDM3NzVMaWdhw6fDtWVzIExvY2FpcyBwYXJhIE91dHJhcyBPcGVyYWRvcmFzICsgMg==",
+            "name": "Ligações Locais para Outras Operadoras",
+            "description": "Ligações Locais para Outras Operadoras",
+            "categories": [
+              "general"
+            ],
+            "max": -1,
+            "consumed": 0,
+            "remaining": -1,
+            "unit": "minute",
+            "time_bands": [
+              "all"
+            ],
+            "destinations": [
+              "local",
+              "non-telefonica"
+            ],
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z"
+          },
+          {
+            "id": "MTE5MTAwMDM3NzVMaWdhY29lcyBPZmZuZXQgLSBNb3ZlbCBMRCAtIExETyArIDM=",
+            "name": "Ligacoes Offnet - Movel LD - LDO",
+            "description": "Ligacoes Offnet - Movel LD - LDO",
+            "categories": [
+              "general"
+            ],
+            "max": -1,
+            "consumed": 0,
+            "remaining": -1,
+            "unit": "minute",
+            "time_bands": [
+              "all"
+            ],
+            "destinations": [
+              "local",
+              "non-telefonica"
+            ],
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z"
+          },
+          {
+            "id": "MTE5MTAwMDM3NzVNSU5VVE9TIEZJWE8gT0ZGLU5FVCBMT0NBTCAtIENGTCArIDQ=",
+            "name": "MINUTOS FIXO OFF-NET LOCAL - CFL",
+            "description": "MINUTOS FIXO OFF-NET LOCAL - CFL",
+            "categories": [
+              "general"
+            ],
+            "max": -1,
+            "consumed": 0,
+            "remaining": -1,
+            "unit": "minute",
+            "time_bands": [
+              "all"
+            ],
+            "destinations": [
+              "local",
+              "non-telefonica",
+              "landline"
+            ],
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z"
+          },
+          {
+            "id": "MTE5MTAwMDM3NzVNSU5VVE9TIEZJWE8gT0ZGLU5FVCBMRCAtIENGRCArIDU=",
+            "name": "MINUTOS FIXO OFF-NET LD - CFD",
+            "description": "MINUTOS FIXO OFF-NET LD - CFD",
+            "categories": [
+              "general"
+            ],
+            "max": -1,
+            "consumed": 0,
+            "remaining": -1,
+            "unit": "minute",
+            "time_bands": [
+              "all"
+            ],
+            "destinations": [
+              "national",
+              "non-telefonica",
+              "landline"
+            ],
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z"
+          }
+        ],
+        "sms": [
+          {
+            "id": "MTE5MTAwMDM3NzVNZW5zYWdlbnMgTXVsdGltw61kaWEgTU1TICsgMA==",
+            "name": "Mensagens Multimídia MMS",
+            "description": "Mensagens Multimídia MMS",
+            "categories": [
+              "general"
+            ],
+            "max": -1,
+            "consumed": 0,
+            "remaining": -1,
+            "unit": "message",
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z"
+          },
+          {
+            "id": "MTE5MTAwMDM3NzVUb3JwZWRvcyBTTVMgKyAx",
+            "name": "Torpedos SMS",
+            "description": "Torpedos SMS",
+            "categories": [
+              "general"
+            ],
+            "max": -1,
+            "consumed": 0,
+            "remaining": -1,
+            "unit": "message",
+            "start_date": "2026-04-06T03:00:00.000Z",
+            "end_date": "2026-05-06T02:59:59.000Z",
+            "renewal_date": "2026-05-06T03:00:00.000Z"
+          }
+        ],
+        "mms": [],
+        "money": []
+      }
+    ]
+}

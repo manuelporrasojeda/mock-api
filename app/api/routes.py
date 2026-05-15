@@ -151,3 +151,31 @@ async def get_status_data(
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc)) from exc
 
     return payload
+
+@router.get("/mobile-quota/v3/users/{entryUUID}/phone-numbers/+55{networkNumber}/quota")
+async def get_quota(entryUUID: str, networkNumber: str):
+    if networkNumber == '1200000500':
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
+    try:
+        payload = await asyncio.to_thread(data_loader.load_status_payload, 'quota', 'quota')
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc)) from exc
+    return payload
+
+@router.get("/prepayBalanceManagement/v7/customerInformationManagement/prepayBalanceManagement/v7/balance")
+async def get_status(networkNumber: str):
+    if networkNumber == '1100000500':
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
+    try:
+        payload = await asyncio.to_thread(data_loader.load_status_payload, 'balance', 'balance')
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc)) from exc
+    return payload
