@@ -159,7 +159,7 @@ async def get_quota(entryUUID: str, networkNumber: str):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
     try:
-        payload = await asyncio.to_thread(data_loader.load_status_payload, 'quota', 'quota')
+        payload = await asyncio.to_thread(data_loader.load_status_payload, 'quota', networkNumber)
     except FileNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
     except ValueError as exc:
@@ -173,7 +173,7 @@ async def get_status(networkNumber: str):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
     try:
-        payload = await asyncio.to_thread(data_loader.load_status_payload, 'balance', 'balance')
+        payload = await asyncio.to_thread(data_loader.load_status_payload, 'balance', networkNumber)
     except FileNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
     except ValueError as exc:

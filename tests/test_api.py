@@ -4,11 +4,15 @@ from __future__ import annotations
 
 import base64
 import json
+from datetime import datetime
 from pathlib import Path
 
+import pytest
 from fastapi.testclient import TestClient
 
-FIXTURE_DIRECTORY = Path(__file__).resolve().parents[1] / "app" / "data" / "tests"
+from app.api import routes
+from app.services import data_loader as data_loader_module
+from app.services.data_loader import DataLoader
 
 
 def build_basic_authorization(client_id: str = "demo", client_secret: str = "demo") -> str:
@@ -195,10 +199,18 @@ def test_user_token_endpoint_rejects_blank_authorization(client: TestClient) -> 
     assert response.json() == {"detail": "The Authorization header is required."}
 
 
-def test_status_endpoint_loads_fixture_data(client: TestClient) -> None:
+def test_status_endpoint_loads_fixture_data(
+    client: TestClient, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     """The status endpoint should return the JSON payload stored on disk."""
 
-    expected_payload = json.loads((FIXTURE_DIRECTORY / "agreement.json").read_text(encoding="utf-8"))
+    expected_payload = {"agreementId": "AGR-001", "status": "ACTIVE"}
+    fixture_directory = tmp_path / "agreement"
+    fixture_directory.mkdir()
+    (fixture_directory / "agreement.json").write_text(
+        json.dumps(expected_payload), encoding="utf-8"
+    )
+    monkeypatch.setattr(routes, "data_loader", DataLoader(tmp_path))
 
     response = client.get(
         "/agreement/v5/status",
@@ -225,8 +237,17 @@ def test_status_endpoint_rejects_non_bearer_authorization(client: TestClient) ->
 
 
 
-def test_status_endpoint_applies_delay_for_special_identity(client: TestClient, monkeypatch) -> None:
+def test_status_endpoint_applies_delay_for_special_identity(
+    client: TestClient, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     """A configured identity should trigger the async delay branch before returning data."""
+
+    fixture_directory = tmp_path / "agreement"
+    fixture_directory.mkdir()
+    (fixture_directory / "slowuser.json").write_text(
+        json.dumps({"agreementId": "AGR-001"}), encoding="utf-8"
+    )
+    monkeypatch.setattr(routes, "data_loader", DataLoader(tmp_path))
 
     observed: dict[str, float] = {}
 
@@ -256,4 +277,59 @@ def test_status_endpoint_returns_not_found_for_unknown_path(client: TestClient) 
     )
 
     assert response.status_code == 404
-    assert response.json() == {"detail": "No mock data configured for path 'unknown'."}
+    assert response.json() == {
+        "detail": "No mock data configured for path 'unknown' and user 'agreement'."
+    }
+
+
+class _FrozenDateTime(datetime):
+    """A ``datetime`` subclass whose ``now`` returns a fixed instant."""
+
+    @classmethod
+    def now(cls, tz=None) -> datetime:  # type: ignore[override]
+        return datetime(2026, 6, 11, 9, 30, 0)
+
+
+def test_status_endpoint_resolves_dynamic_date_placeholders(
+    client: TestClient,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The status endpoint should serve fixtures with placeholders already resolved."""
+
+    fixture_directory = tmp_path / "agreement"
+    fixture_directory.mkdir()
+    (fixture_directory / "CLIENT-1.json").write_text(
+        json.dumps(
+            {
+                "agreementId": "AGR-001",
+                "paymentDueDate": "{{ days:+5 | %Y-%m-%d }}",
+                "schedule": {"renewalDate": "{{ months:+1 | %Y-%m-%d }}"},
+                "history": ["{{ weeks:-1 | %Y-%m-%d }}"],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    # Point the router's loader at the temp fixtures and freeze "now" so the
+    # resolved dates are deterministic.
+    monkeypatch.setattr(routes, "data_loader", DataLoader(tmp_path))
+    monkeypatch.setattr(data_loader_module, "datetime", _FrozenDateTime)
+
+    response = client.get(
+        "/agreement/v5/status",
+        headers={"Authorization": "Bearer user_token"},
+        params={
+            "accountId": "ACC-001",
+            "newFieldsInd": "true",
+            "nationalIdentityCardNr": "CLIENT-1",
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "agreementId": "AGR-001",
+        "paymentDueDate": "2026-06-16",
+        "schedule": {"renewalDate": "2026-07-11"},
+        "history": ["2026-06-04"],
+    }

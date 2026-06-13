@@ -1,12 +1,46 @@
-{
-  "agreementId": "AGR-001",
-  "status": "IS WORKING!",
-  "product": "Fiber",
-  "plan": "Unlimited Plus",
-  "startDate": "2025-01-01",
-  "customer": {
-    "fullName": "Mock Customer",
-    "documentType": "NATIONAL_ID",
-    "documentNumber": "12345678A"
+ {
+    "agreement": {
+      "agreementDate": "2026-02-12T00:00:00.000-03:00",
+      "numOfInstallments": 3,
+      "paymentDueDate": "2026-02-22T00:00:00.000-03:00",
+      "agreementStatus": "Active",
+      "paAmount": "6323.43",
+      "downPaymentAmount": "15.00",
+      "discountAmount": "0.00",
+      "finInterestAmount": "0.00",
+      "lpfAmount": "0.00",
+      "totalPastDue": "6323.43",
+      "paStatusDate": "2026-02-13T00:00:00.000-03:00",
+      "quotaInquiryAgreement": [
+        {
+          "index": 1,
+          "amountPayment": 15.0,
+          "paymentDueDate": "2026-02-22T00:00:00.000-03:00",
+          "paymentInstallmentsStatus": "PAID",
+          "paymentDate": "2026-02-13T00:00:00.000-03:00",
+          "interestsAmount": 0.0
+        },
+        {
+          "index": 2,
+          "amountPayment": 3154.22,
+          "paymentDueDate": "2026-03-23T00:00:00.000-03:00",
+          "paymentInstallmentsStatus": "PAID",
+          "paymentDate": "2026-03-13T00:00:00.000-03:00",
+          "interestsAmount": 0.0
+        },
+        {
+          "index": 3,
+          "amountPayment": 3154.21,
+          "paymentDueDate": "2026-04-23T00:00:00.000-03:00",
+          "paymentInstallmentsStatus": "OPEN",
+          "paymentDate": null,
+          "interestsAmount": 0.0
+        }
+      ],
+      "paSeqNo": "3",
+      "entityType": "ACCOUNT",
+      "massivePAInd": "false",
+      "penalyInterestAmount": "0.00"
+    }
   }
-}
+

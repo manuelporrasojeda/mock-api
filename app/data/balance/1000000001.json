@@ -1,0 +1,60 @@
+{
+    "balanceList": [
+      {
+        "balanceType": {
+          "id": "1",
+          "description": "Recarga Convencional - NOR"
+        },
+        "availableBalance": 45.67,
+        "unitOfMeasure": "R$ - Reais",
+        "validFor": {
+          "endTime": "2025-10-01T23:59:59.000Z"
+        }
+      },
+      {
+        "balanceType": {
+          "id": "82",
+          "description": "Saldo Normal sem Desoneracao Fiscal - SNS"
+        },
+        "availableBalance": 12.34,
+        "unitOfMeasure": "R$ - Reais",
+        "validFor": {
+          "endTime": "2025-10-01T23:59:59.000Z"
+        }
+      },
+      {
+        "balanceType": {
+          "id": "18",
+          "description": "Saldo Recarga Especial - SNS"
+        },
+        "availableBalance": 7.89,
+        "unitOfMeasure": "R$ - Reais",
+        "validFor": {
+          "endTime": "2025-10-01T23:59:59.000Z"
+        }
+      },
+      {
+        "balanceType": {
+          "id": "99",
+          "description": "Outro saldo (ignorado pelo agente v1)"
+        },
+        "availableBalance": 1.0,
+        "unitOfMeasure": "R$ - Reais",
+        "validFor": {
+          "endTime": "2025-12-31T23:59:59.000Z"
+        }
+      },
+      {
+        "balanceType": {
+          "id": "98",
+          "description": "Outro saldo (ignorado pelo agente v1)"
+        },
+        "availableBalance": 100.0,
+        "unitOfMeasure": "R$ - Reais",
+        "validFor": {
+          "endTime": "2025-12-31T23:59:59.000Z"
+        }
+      }
+    ],
+    "providerId": null
+}
